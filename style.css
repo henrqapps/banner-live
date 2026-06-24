@@ -10,41 +10,21 @@ body{
   position:relative;
 }
 
-/* imagem agora respeita o formato vertical */
 #banner{
   width:100%;
   height:100%;
-  object-fit:contain; /* mantém proporção sem cortar */
+  object-fit:contain;
   opacity:0;
-  transform:scale(1.05);
-  transition:all .6s ease;
+  transition:opacity .6s ease; /* só transição suave */
 }
 
 #banner.show{
   opacity:1;
-  transform:scale(1);
 }
 
-/* overlay continua funcionando igual */
 #overlay{
   position:absolute;
   inset:0;
-  background:linear-gradient(
-    180deg,
-    rgba(255,0,0,.15),
-    transparent,
-    rgba(255,0,0,.1)
-  );
+  background:transparent;
   pointer-events:none;
-}
-
-/* animação do QR */
-.qr{
-  animation:pulse 1.2s infinite;
-}
-
-@keyframes pulse{
- 0%{transform:scale(1)}
- 50%{transform:scale(1.08)}
- 100%{transform:scale(1)}
 }
