@@ -1,31 +1,52 @@
-const banners=[
-"img/produto1.png","img/produto2.png","img/produto3.png","img/produto4.png",
-"img/produto5.png","img/produto6.png","img/produto7.png","img/produto8.png"
+const banners = [
+  "img/produto1.png",
+  "img/produto2.png",
+  "img/produto3.png",
+  "img/produto4.png",
+  "img/produto5.png",
+  "img/produto6.png",
+  "img/produto7.png",
+  "img/produto8.png"
 ];
-const qrCode="img/qrcode.png";
-const bannerEl=document.getElementById("banner");
-let lastIndex=-1;
+
+const qrCode = "img/qrcode.png";
+
+const bannerEl = document.getElementById("banner");
+
+let lastIndex = -1;
+
 function randomBanner(){
-let i;
-do{i=Math.floor(Math.random()*banners.length);}while(i===lastIndex);
-lastIndex=i;
-return banners[i];
+  let i;
+  do {
+    i = Math.floor(Math.random() * banners.length);
+  } while (i === lastIndex);
+
+  lastIndex = i;
+  return banners[i];
 }
-function show(src,qr=false){
-bannerEl.classList.remove("show","qr");
-setTimeout(()=>{
-bannerEl.src=src;
-bannerEl.classList.add("show");
-if(qr)bannerEl.classList.add("qr");
-},200);
+
+function show(src){
+  bannerEl.classList.remove("show");
+
+  setTimeout(() => {
+    bannerEl.src = src;
+    bannerEl.classList.add("show");
+  }, 200);
 }
+
 function run(){
-const b1=randomBanner();
-const b2=randomBanner();
-show(b1);
-setTimeout(()=>show(b2),4000);
-setTimeout(()=>show(qrCode,true),8000);
-setTimeout(()=>bannerEl.classList.remove("show","qr"),13000);
+  const b1 = randomBanner();
+  const b2 = randomBanner();
+
+  show(b1);
+
+  setTimeout(() => show(b2), 4000);
+  setTimeout(() => show(qrCode), 8000);
+
+  setTimeout(() => {
+    bannerEl.classList.remove("show");
+  }, 13000);
 }
+
 run();
-setInterval(run,30*60*1000);
+setInterval(run, 30 * 60 * 1000);
