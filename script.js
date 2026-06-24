@@ -27,26 +27,42 @@ function randomBanner(){
 
 function show(src){
   bannerEl.classList.remove("show");
-
   setTimeout(() => {
     bannerEl.src = src;
     bannerEl.classList.add("show");
   }, 200);
 }
 
-function run(){
-  const b1 = randomBanner();
-  const b2 = randomBanner();
-
-  show(b1);
-
-  setTimeout(() => show(b2), 8000);
-  setTimeout(() => show(qrCode), 16000);
-
-  setTimeout(() => {
-    bannerEl.classList.remove("show");
-  }, 13000);
+function hide(){
+  bannerEl.classList.remove("show");
 }
 
-run();
-setInterval(run, 30 * 60 * 1000);
+function runSequence(){
+
+  const first = randomBanner();
+  const second = randomBanner();
+
+  // 1ª imagem (6s)
+  show(first);
+
+  // 2ª imagem (6s depois)
+  setTimeout(() => {
+    show(second);
+  }, 6000);
+
+  // QR code (12s depois)
+  setTimeout(() => {
+    show(qrCode);
+  }, 12000);
+
+  // sumir tudo (22s depois)
+  setTimeout(() => {
+    hide();
+  }, 22000);
+}
+
+// primeira execução
+runSequence();
+
+// repetir a cada 30 minutos
+setInterval(runSequence, 30 * 60 * 1000);
