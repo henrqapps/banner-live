@@ -40,8 +40,8 @@ function run(){
 
   show(b1);
 
-  setTimeout(() => show(b2), 4000);
-  setTimeout(() => show(qrCode), 8000);
+  setTimeout(() => show(b2), 8000);
+  setTimeout(() => show(qrCode), 16000);
 
   setTimeout(() => {
     bannerEl.classList.remove("show");
