@@ -6,7 +6,10 @@ const banners = [
   "img/produto5.png",
   "img/produto6.png",
   "img/produto7.png",
-  "img/produto8.png"
+  "img/produto8.png",
+  "img/produto9.png",
+  "img/produto10.png",
+  "img/produto11.png"
 ];
 
 const qrCode = "img/qrcode.png";
