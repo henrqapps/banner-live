@@ -15,7 +15,7 @@ const banners = [
 const qrCode = "img/qrcode.png";
 
 // Arte do LivePix
-const livePix = "img/livepix.png";
+const livePix = "img/Livepix.png";
 
 const bannerEl = document.getElementById("banner");
 
@@ -49,7 +49,7 @@ bannerEl.classList.remove("show");
 
 function runSequence(){
 
-// Se o LivePix estiver aparecendo, não inicia outro ciclo
+// Não inicia a sequência se o LivePix estiver aparecendo
 if (livePixVisible) {
 return;
 }
@@ -60,21 +60,21 @@ const second = randomBanner();
 // 1ª imagem
 show(first);
 
-// 2ª imagem (6s depois)
+// 2ª imagem (6 segundos depois)
 setTimeout(() => {
 if (!livePixVisible) {
 show(second);
 }
 }, 6000);
 
-// QR Code (12s depois)
+// QR Code (12 segundos depois)
 setTimeout(() => {
 if (!livePixVisible) {
 show(qrCode);
 }
 }, 12000);
 
-// Sumir tudo (22s depois)
+// Sumir tudo (22 segundos depois)
 setTimeout(() => {
 if (!livePixVisible) {
 hide();
@@ -84,7 +84,7 @@ hide();
 
 function showLivePix(){
 
-// Marca que o LivePix está ativo
+// Ativa o LivePix
 livePixVisible = true;
 
 // Mostra o LivePix
@@ -97,11 +97,23 @@ livePixVisible = false;
 }, 10000);
 }
 
-// Primeira execução
-runSequence();
+// ========================================
+// INÍCIO DA LIVE
+// ========================================
 
-// Ciclo normal a cada 30 minutos
+// LivePix aparece imediatamente
+showLivePix();
+
+// ========================================
+// CICLO NORMAL
+// ========================================
+
+// Produtos + QR Code a cada 30 minutos
 setInterval(runSequence, 30 * 60 * 1000);
 
-// LivePix a cada 10 minutos
+// ========================================
+// LIVEPIX
+// ========================================
+
+// LivePix aparece novamente a cada 10 minutos
 setInterval(showLivePix, 10 * 60 * 1000);
